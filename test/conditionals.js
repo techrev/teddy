@@ -147,6 +147,16 @@ describe('Conditionals', function () {
     done()
   })
 
+  it('should evaluate one line if "if-something" as true in self-closing element (conditionals/oneLineSelfClosing.html)', function (done) {
+    assert.equalIgnoreSpaces(teddy.render('conditionals/oneLineSelfClosing.html', model), '<input class=\'something-is-present\'/>')
+    done()
+  })
+
+  it('should evaluate one line if "if-something" as true when result includes slash (/) characters (conditionals/oneLineWithSlash.html)', function (done) {
+    assert.equalIgnoreSpaces(teddy.render('conditionals/oneLineWithSlash.html', model), '<a href=\'/something\'>One line if.</a>')
+    done()
+  })
+
   // #36
   it('should evaluate one line if "if-something" as true with no false condition supplied (conditionals/oneLineTrueOnly.html)', function (done) {
     assert.equalIgnoreSpaces(teddy.render('conditionals/oneLineTrueOnly.html', model), '<p class=\'something-is-present\'>One line if.</p>')

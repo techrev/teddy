@@ -715,11 +715,8 @@
   // get a specific attribute from a given element
   function removeAttribute (el, attr) {
     attr = attr.replace(/[-[\]/{}()*+?.\\^$|]/g, '\\$&')
-    var newEl = el.replace(new RegExp('(?: (?:' + attr + '(?: |>))| (?:' + attr + '=)(?:\\"([\\S\\s]*?)\\"|\\\'([\\S\\s]*?)\\\')(?: |>))'), ' ')
-    if (newEl.charAt(newEl.length - 1) !== '>') {
-      newEl = newEl.trim()
-      newEl += '>'
-    }
+    var newEl = el.replace(new RegExp('(?: (?:' + attr + '(?: |>))| (?:' + attr + '=)(?:("(.*?)")|(\'(.*?)\'))($|(?=[ >/])))'), '')
+
     return newEl
   }
 
