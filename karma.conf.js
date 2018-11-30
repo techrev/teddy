@@ -55,7 +55,7 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: false,
     singleRun: true,
-    browsers: ['Firefox'],
+    browsers: ['Chrome_Headless', 'Firefox'],
     concurrency: 1
   }
 

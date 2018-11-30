@@ -10,3 +10,4 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install googlechrome; choco install firefox; cd "C:\Program Files\Mozilla Firefox"; echo "firefox directory"; pwd; dir; fi
 script:
   - npm run coverage
+  - karma start karma.conf.js
