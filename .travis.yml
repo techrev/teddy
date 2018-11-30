@@ -5,7 +5,6 @@ node_js:
   - "11"
   - "10"
 before_script:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install chromium --pre -y; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install chromium --pre -y; chrome --headless --disable-gpu --dump-dom --enable-logging https://www.chromestatus.com/ --no-first-run; fi
 script:
   - npm run coverage
-  - npm run test-chrome
