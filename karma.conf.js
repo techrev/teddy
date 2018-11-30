@@ -45,6 +45,13 @@ module.exports = function (config) {
         reporter: 'html'
       }
     },
+    customLaunchers: {
+      chromium_headless: {
+        base: 'Chrome',
+        flags: ['--headless', '--disable-gpu', '--enable-logging'],
+        displayName: 'Headless Chromium'
+      }
+    },
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
