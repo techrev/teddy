@@ -7,6 +7,6 @@ node_js:
   - "11"
   - "10"
 before_script:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install googlechrome; choco install firefox; cd "C:\Program Files (x86)\Google\Chrome\Application\70.0.3538.110"; echo "google directory"; pwd; dir; cd "C:\Program Files\Mozilla Firefox"; echo "firefox directory" pwd; dir; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install googlechrome; choco install firefox; cd "C:\Program Files\Mozilla Firefox"; echo "firefox directory" pwd; dir; fi
 script:
   - npm run coverage
