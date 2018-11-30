@@ -45,17 +45,11 @@ module.exports = function (config) {
         reporter: 'html'
       }
     },
-    customLaunchers: {
-      Chrome_Headless: {
-        base: 'Chrome',
-        flags: ['--headless', '--no-sandbox']
-      }
-    },
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
     singleRun: true,
-    browsers: ['Chrome_Headless', 'Firefox'],
+    browsers: [],
     concurrency: 1
   }
 
