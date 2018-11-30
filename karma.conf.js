@@ -46,16 +46,16 @@ module.exports = function (config) {
       }
     },
     customLaunchers: {
-      ChromeHeadless: {
+      Chrome_Headless: {
         base: 'Chrome',
-        flags: ['--headless']
+        flags: ['--headless', '--no-sandbox']
       }
     },
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
     singleRun: true,
-    browsers: ['ChromeHeadless', 'Firefox'],
+    browsers: ['Firefox'],
     concurrency: 1
   }
 
