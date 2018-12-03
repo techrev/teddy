@@ -5,6 +5,6 @@ node_js:
   - "11"
   - "10"
 before_script:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; choco install chromium --version 72.0.3592.0-snapshots --pre -y; cd "C:\Program Files (x86)\Chromium\Application"; pwd; dir; echo "after this comes the call to chrome"; chrome --headless --disable-gpu --dump-dom --enable-logging https://www.chromestatus.com/; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; choco install chromium --version 72.0.3592.0-snapshots --pre -y; cd "C:\Program Files (x86)\Chromium\Application"; pwd; dir; echo "after this comes the call to chrome"; .\chrome --headless --disable-gpu --dump-dom --enable-logging https://www.chromestatus.com/ --no-first-run; fi
 script:
   - npm run test-chrome
