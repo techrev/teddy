@@ -4,7 +4,9 @@ os:
 node_js:
   - "11"
   - "10"
+before_install:
+  - powershell ./downloadChrome.ps1
 before_script:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install chromium --version 72.0.3592.0-snapshots --pre -y; cd "C:\Program Files (x86)\Chromium\Application"; pwd; dir; echo "now comes the call to chrome"; .\chrome.exe --headless --disable-gpu --dump-dom --enable-logging http://www.chromestatus.com --no-first-run; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then .\chrome64_67.0.3396.79.exe /silent /install; fi
 script:
   - npm run test-chrome
