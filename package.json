@@ -67,7 +67,7 @@
     "lint": "standard && eslint ./test",
     "test": "cross-env NODE_ENV=test npm run lint && npm run test-server && npm run test-chrome",
     "test-server": "cross-env NODE_ENV=test mocha test",
-    "test-chrome": "npm --version",
+    "test-chrome": "karma start --browsers Chrome",
     "test-firefox": "karma start --browsers Firefox",
     "test-ie": "karma start --browsers IE",
     "test-safari": "karma start --browsers Safari"
