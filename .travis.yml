@@ -11,5 +11,6 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell ".\chrome64_67.0.3396.79.exe /silent /install"; echo "Sleeping for 30 seconds to allow install"; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell sleep -s 30; cd "C:\Program Files (x86)\Google\Chrome\Application"; pwd; dir; echo "after this comes the call to chrome"; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell ".\chrome --headless --remote-debugging-port=9333 --enable-logging"; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cd "C:\Users\travis\build\techrev\teddy"
 script:
   - npm run test-chrome
