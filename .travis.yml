@@ -15,4 +15,4 @@ before_script:
 script:
   - npm run test-chrome
 after_script:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell Get-CimInstance -ClassName Win32_Process -Filter "CommandLine LIKE '%chrome.exe%--headless%'" | %{Stop-Process $_.ProcessId}; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell "Get-CimInstance -ClassName Win32_Process -Filter 'CommandLine like "%chrome.exe%--headless%"' | %{Stop-Process $_.ProcessId}"; fi
