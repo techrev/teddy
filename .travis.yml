@@ -4,8 +4,8 @@ os:
 node_js:
   - "11"
   - "10"
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine; powershell ./downloadInstallChrome.ps1; fi
+before_install: # the sleep is to give it time to install. Otherwise it keeps going before the installer has a chance to finish
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine; powershell ./downloadInstallChrome.ps1; powershell sleep -s 30; fi
 before_script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then  cd "C:\Program Files (x86)\Google\Chrome\Application"; pwd; dir; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cd "C:\\Users\\travis\\build\\techrev\\teddy"; fi
