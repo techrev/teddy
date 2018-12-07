@@ -4,9 +4,9 @@ $fileDetails = Get-ChildItem $pwd | findstr -i $exeName
 "Chrome installer executable is $fileDetails`n"
 if ($fileDetails -ne $null) {
     "Starting chrome installer`n"
-    Start-Process $exeName -ArgumentList "silent", "install"
-    if ($? -eq $true) {
-        "Install complete`nChecking information after install:"
+    $chromeProc = Start-Process $exeName -ArgumentList "silent", "install" -PassThru -Wait
+    if ($chromeProc.ExitCode -eq 0) {
+        "Install sucessfully completed`nChecking for existence of path and executable"
         $exePath = "C:\Program Files (x86)\Google\Chrome\Application"
         $exeName = "chrome.exe"
         Set-Location -Path $exePath
