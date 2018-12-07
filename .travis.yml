@@ -5,7 +5,7 @@ node_js:
   - "11"
   - "10"
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine; powershell ./downloadInstallChrome.ps1; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine; powershell ./downloadChrome.ps1; fi
 before_script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo "starting path:"; pwd; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell ".\chrome64_67.0.3396.79.exe /silent /install"; echo "Sleeping for 30 seconds to allow install"; fi
