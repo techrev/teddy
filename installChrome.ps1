@@ -4,7 +4,7 @@ $fileDetails = Get-ChildItem $pwd | findstr -i $exeName
 "Chrome installer executable is $fileDetails`n"
 if ($fileDetails -ne $null) {
     "Starting chrome installer`n"
-    $chromeProc = Start-Process $exeName -ArgumentList "silent", "install" -PassThru
+    $chromeProc = Start-Process $exeName -ArgumentList "/silent", "/install" -PassThru
     $chromeHdl = $chromeProc.Handle
     $chromeProcId = Get-Process -Name "chrome*" | select -expand id
     "Chrome install process Id is $chromeProcId"
