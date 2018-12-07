@@ -11,6 +11,9 @@ if ($fileDetails -ne $null) {
     "Starting chrome installer`n"
     Start-Process $exeName -ArgumentList "silent", "install"
     if ($? -eq $true) {
+        Set-Location -Path "C:"
+        $chromeLoc = Get-ChildItem $pwd | findstr -i "chrome.exe"
+        "chrome executable location is $chromeLoc"
         "Install complete"
     } else {
         "Install did not complete properly"
