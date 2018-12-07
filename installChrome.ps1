@@ -6,7 +6,12 @@ if ($fileDetails -ne $null) {
     "Starting chrome installer`n"
     $chromeProc = Start-Process $exeName -ArgumentList "silent", "install" -PassThru
     $chromeHdl = $chromeProc.Handle
-    $chromeProc.WaitForExit();
+    $chromeProcId = Get-Process -Name "chrome*" | select -expand id
+    "Chrome install process Id is $chromeProcId"
+    while ($chromeProcId -ne $null) {
+        "Chrome install process Id is $chromeProcId"
+        $chromeProcId = Get-Process -Name "chrome64*" | select -expand id
+    }
     if ($chromeProc.ExitCode -eq 0) {
         "Install sucessfully completed`nChecking for existence of path and executable"
         $exePath = "C:\Program Files (x86)\Google\Chrome\Application"
