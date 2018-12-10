@@ -5,9 +5,9 @@ node_js:
   - "11"
   - "10"
 before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cd "C:\Program Files\Mozilla Firefox"; pwd; dir; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell ".\downloadChrome.ps1"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell cd "C:\Program Files\Mozilla Firefox"; pwd; dir; fi
 before_script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell ".\installChrome.ps1"; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell ".\startChrome.ps1"; fi
