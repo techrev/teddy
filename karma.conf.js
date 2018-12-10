@@ -50,6 +50,11 @@ module.exports = function (config) {
         base: 'Chrome',
         flags: ['--headless', '--disable-gpu', '--enable-logging'],
         displayName: 'Headless Chromium'
+      },
+      firefox_headless: {
+        base: 'Firefox',
+        flags: ['-headless'],
+        displayName: 'Headless Firefox'
       }
     },
     colors: true,
