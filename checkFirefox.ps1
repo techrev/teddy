@@ -5,3 +5,4 @@ Set-Location -Path $ffPath
 $ffDir = Get-ChildItem
 "contents of ff directory:`n$ffDir"
 Set-Location -Path $origPath
+"working directory is $pwd"
