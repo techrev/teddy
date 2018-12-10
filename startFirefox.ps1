@@ -6,3 +6,5 @@ Start-Process -FilePath $path -ArgumentList "-headless"
 if ($? -ne $true) {
     "Could not start firefox"
 }
+$procId = Get-Process -Name "firefox" | select -expand id
+"firefox PID is $procId"
