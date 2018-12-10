@@ -7,12 +7,17 @@ if ($fileDetails -ne $null) {
     $chromeProc = Start-Process $exeName -ArgumentList "/silent", "/install" -PassThru
     $chromeHdl = $chromeProc.Handle
     $chromeProcId = Get-Process -Name "chrome*" | select -expand id
-    "Chrome install process Id is $chromeProcId`nSleeping for 30 seconds"
-    Start-Sleep -s 30
+    "Chrome install process Id is $chromeProcId"
     $chromeProcRun = Get-Process -Id $chromeProcId
     $isDone = $chromeProcRun.HasExited
+    while (!$isDone) {
+        "Sleeping for 30 seconds........"
+        Start-Sleep -s 30
+        $isDone = $chromeProcRun.HasExited
+        "isDone is $isDone"
+    }
     $eCode = $chromeProcRun.ExitCode
-    "isDone is $isDone; chromeProcRun.ExitCode is $eCode"
+    "chromeProcRun.ExitCode is $eCode"
     if ($eCode -eq 0) {
         "Install sucessfully completed`nChecking for existence of path and executable"
         $exePath = "C:\Program Files (x86)\Google\Chrome\Application"
