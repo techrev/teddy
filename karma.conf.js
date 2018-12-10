@@ -57,7 +57,8 @@ module.exports = function (config) {
     autoWatch: false,
     singleRun: true,
     browsers: [],
-    concurrency: 1
+    concurrency: 1,
+    browserSocketTimeout: 40000
   }
 
   config.set(configuration)
