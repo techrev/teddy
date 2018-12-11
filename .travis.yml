@@ -11,9 +11,8 @@ before_script:
 #  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell ".\installChrome.ps1"; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox; fi
 #  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell ".\startChrome.ps1"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell (gcm firefox.exe).Path; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell $env:FIREFOX_BIN="C:\Program Files\Mozilla Firefox"; env; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then karma start --browsers firefox_headless; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell $env:FIREFOX_BIN="C:\Program Files\Mozilla Firefox"; powershell "get-childitem env:"; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then karma start --browsers FirefoxHeadless; fi
 script:
 #  - npm run test-chrome
   - npm run test-firefox
