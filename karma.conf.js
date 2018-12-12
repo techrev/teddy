@@ -45,13 +45,14 @@ module.exports = function (config) {
         reporter: 'html'
       }
     },
+    hostname: '0.0.0.0',
     colors: true,
     logLevel: config.LOG_DEBUG,
     autoWatch: false,
     singleRun: true,
     browsers: [],
     concurrency: 1,
-    browserSocketTimeout: 40000
+    browserSocketTimeout: 20000
   }
 
   config.set(configuration)
