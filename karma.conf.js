@@ -46,7 +46,7 @@ module.exports = function (config) {
       }
     },
     colors: true,
-    logLevel: config.LOG_INFO,
+    logLevel: config.DEBUG,
     autoWatch: false,
     singleRun: true,
     browsers: [],
