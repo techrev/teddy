@@ -3,7 +3,7 @@ os:
   - windows
 node_js:
   - "11"
-  - "10"
+#  - "10"
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine; fi
 #  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell ".\downloadChrome.ps1"; fi
