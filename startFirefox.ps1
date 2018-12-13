@@ -7,6 +7,8 @@ $path = Join-Path $nodePath "node.exe"
 "working directory is $pwd"
 $karmaFFPath = Join-Path $pwd "node_modules\karma-firefox-launcher"
 $karmaFFDir = Get-ChildItem -Path $karmaFFPath
+"path to karma ff launcher is $karmaFFPath"
+"karma ff launcher directory listing is $karmaFFDir"
 # Start-Process -FilePath $path -WorkingDirectory $nodePath -ArgumentList "karma", "start"
 # "Sleeping for 30 seconds to let karma server get fully started"
 # Start-Sleep -s 30
