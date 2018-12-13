@@ -1,6 +1,6 @@
 "Starting karma server"
 $path = Join-Path $pwd "karma"
-Start-Process -FilePath $pwd -ArgumentList "start"
+Start-Process -FilePath $path -ArgumentList "start"
 "Sleeping for 30 seconds to let karma server get fully started"
 Start-Sleep -s 30
 $karmaProcId = Get-Process -Name "node" | select -expand id
