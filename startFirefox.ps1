@@ -1,3 +1,8 @@
+"Starting karma server"
+$path = Join-Path $pwd "karma"
+Start-Process -FilePath $pwd -ArgumentList "start"
+$karmaStarted = $? -eq true
+"Karma started? $karmaStarted"
 "Starting firefox"
 $exePath = "C:\Program Files\Mozilla Firefox"
 $exeName = "firefox.exe"
