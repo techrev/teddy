@@ -7,6 +7,9 @@ $path = Join-Path $nodePath "node.exe"
 "working directory is $pwd"
 $karmaFFPath = Join-Path $pwd "node_modules\karma-firefox-launcher"
 $subFile = Join-Path $pwd "subs/index.js"
+"Copying $subFile to $karmaFFPath"
+$karmaFFDir = Get-ChildItem -Path $karmaFFPath
+"Contents of ff launcher directory is $karmaFFDir"
 Copy-Item $subFile -Destination $karmaFFPath
 # Start-Process -FilePath $path -WorkingDirectory $nodePath -ArgumentList "karma", "start"
 # "Sleeping for 30 seconds to let karma server get fully started"

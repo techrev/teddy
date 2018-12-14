@@ -2,6 +2,7 @@
 
 var fs = require('fs')
 var path = require('path')
+var log = require('../karma/lib/logger').create('fflauncher')
 
 var PREFS = [
   'user_pref("browser.shell.checkDefaultBrowser", false);',
@@ -126,7 +127,7 @@ var FirefoxBrowser = function (id, baseBrowserDecorator, args) {
   }
 
   this._start = function (url) {
-    console.log(`In karma ff launcher index.js line 129 starting firefox with url ${url}`)
+    log.debug(`In karma ff launcher index.js line 129 starting firefox with url ${url}`)
     var self = this
     var command = this._getCommand()
     var profilePath = args.profile || self._tempDir
@@ -162,7 +163,7 @@ FirefoxBrowser.prototype = {
   },
   ENV_CMD: 'FIREFOX_BIN'
 }
-console.log(`In karma ff launcher index.js line 165 Program Files Directories: ${process.env.PROGRAMFILES}, ${process.env['PROGRAMFILES(X86)']}`)
+log.debug(`In karma ff launcher index.js line 165 Program Files Directories: ${process.env.PROGRAMFILES}, ${process.env['PROGRAMFILES(X86)']}`)
 FirefoxBrowser.$inject = ['id', 'baseBrowserDecorator', 'args']
 
 var FirefoxHeadlessBrowser = makeHeadlessVersion(FirefoxBrowser)
