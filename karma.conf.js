@@ -45,7 +45,6 @@ module.exports = function (config) {
         reporter: 'html'
       }
     },
-    hostname: '0.0.0.0',
     colors: true,
     logLevel: config.LOG_DEBUG,
     autoWatch: false,
