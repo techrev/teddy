@@ -6,10 +6,17 @@ $path = Join-Path $nodePath "node.exe"
 "path to node is $path"
 "working directory is $pwd"
 $karmaFFPath = Join-Path $pwd "node_modules\karma-firefox-launcher"
+$karmaCapturePath = Join-Path $pwd "node_modules\karma\lib\launchers"
+$karmaServerPath = Join-Path $pwd "node_modules\karma\lib"
 $subFile = Join-Path $pwd "subs/index.js"
+$capTOFile = Join-Path $pwd "subs/capture_timeout.js"
+$serverFile = Join-Path $pwd "subs/server.js"
 "Copying $subFile to $karmaFFPath"
-$karmaFFDir = Get-ChildItem -Path $karmaFFPath
 Copy-Item $subFile -Destination $karmaFFPath
+"Copying $capTOFile to $karmaCapturePath"
+Copy-Item $capTOFile -Destination $karmaCapturePath
+"Copying $serverFile to $karmaServerPath"
+Copy-Item $serverFile -Destination $karmaServerPath
 # Start-Process -FilePath $path -WorkingDirectory $nodePath -ArgumentList "karma", "start"
 # "Sleeping for 30 seconds to let karma server get fully started"
 # Start-Sleep -s 30

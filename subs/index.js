@@ -109,7 +109,6 @@ var makeHeadlessVersion = function (Browser) {
           if (error) {
             log.debug(`Error checking to see if ff is running: exit code: ${error.code} message: ${error.message}`)
           }
-          log.debug(stdout)
           if (stdout.toLowerCase().indexOf('firefox') > -1) {
             log.debug(`Firefox process is running`)
           }
