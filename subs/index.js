@@ -3,6 +3,7 @@
 var fs = require('fs')
 var path = require('path')
 var log = require('../karma/lib/logger').create('fflauncher')
+var exec = require('child_process').exec
 
 var PREFS = [
   'user_pref("browser.shell.checkDefaultBrowser", false);',
@@ -101,8 +102,19 @@ var makeHeadlessVersion = function (Browser) {
     var execCommand = this._execCommand
     this._execCommand = function (command, args) {
       log.debug(`In karma ff launcher index.js line 103, command is ${command}, args are ${args} (-headless will be concatenated to args)`)
-      let callRes = execCommand.call(this, command, args.concat('-headless'))
-      log.debug(`Returned from execCommand.call with result ${callRes}`)
+      execCommand.call(this, command, args.concat('-headless'))
+      log.debug(`Returned from execCommand.call. Waiting 20 seconds and then checking to see if process is running`)
+      setTimeout(() => {
+        exec('tasklist', { windowsHide: true }, (error, stdout, stderr) => {
+          if (error) {
+            log.debug(`Error checking to see if ff is running: exit code: ${error.code} message: ${error.message}`)
+          }
+          log.debug(stdout)
+          if (stdout.toLowerCase().indexOf('firefox') > -1) {
+            log.debug(`Firefox process is running`)
+          }
+        })
+      }, 20000)
     }
   }
 
