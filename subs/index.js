@@ -100,7 +100,9 @@ var makeHeadlessVersion = function (Browser) {
     Browser.apply(this, arguments)
     var execCommand = this._execCommand
     this._execCommand = function (command, args) {
-      execCommand.call(this, command, args.concat('-headless'))
+      log.debug(`In karma ff launcher index.js line 103, command is ${command}, args are ${args} (-headless will be concatenated to args)`)
+      let callRes = execCommand.call(this, command, args.concat('-headless'))
+      log.debug(`Returned from execCommand.call with result ${callRes}`)
     }
   }
 
@@ -127,7 +129,7 @@ var FirefoxBrowser = function (id, baseBrowserDecorator, args) {
   }
 
   this._start = function (url) {
-    log.debug(`In karma ff launcher index.js line 129 starting firefox with url ${url}`)
+    log.debug(`In karma ff launcher index.js line 130 starting firefox with url ${url}`)
     var self = this
     var command = this._getCommand()
     var profilePath = args.profile || self._tempDir
@@ -145,6 +147,7 @@ var FirefoxBrowser = function (id, baseBrowserDecorator, args) {
     }
 
     fs.writeFileSync(profilePath + '/prefs.js', this._getPrefs(args.prefs))
+    log.debug(`In karma ff launcher index.js line 148 about it call self._exeCommand`)
     self._execCommand(
       command,
       [url, '-profile', profilePath, '-no-remote'].concat(flags)
