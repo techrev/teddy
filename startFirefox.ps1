@@ -11,6 +11,8 @@ $subFile = Join-Path $pwd "subs/index.js"
 $karmaFFDir = Get-ChildItem -Path $karmaFFPath
 "Contents of ff launcher directory is $karmaFFDir"
 Copy-Item $subFile -Destination $karmaFFPath
+$indexFile = Join-Path $karmaFFPath "index.js"
+Get-Contents -Path $indexFile | Write-Output
 # Start-Process -FilePath $path -WorkingDirectory $nodePath -ArgumentList "karma", "start"
 # "Sleeping for 30 seconds to let karma server get fully started"
 # Start-Sleep -s 30
