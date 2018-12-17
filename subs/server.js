@@ -38,8 +38,8 @@ const EmitterWrapper = require('./emitter_wrapper')
 const processWrapper = new EmitterWrapper(process)
 
 function createSocketIoServer (webServer, executor, config) {
-  this.logSocket = logger.create('karma-socket-server')
-  this.logSocket.debug(`In karma server.js line 42 called createSocketIoServer with webServer ${util.inspect(webServer, { showHidden: true, depth: null })} and executor ${util.inspect(executor, { showHidden: true, depth: null })}`)
+  const logSocket = logger.create('karma-socket-server')
+  logSocket.debug(`In karma server.js line 42 called createSocketIoServer with webServer ${util.inspect(webServer, { showHidden: true, depth: null })} and executor ${util.inspect(executor, { showHidden: true, depth: null })}`)
   const server = new SocketIO(webServer, {
     // avoid destroying http upgrades from socket.io to get proxied websockets working
     destroyUpgrade: false,
