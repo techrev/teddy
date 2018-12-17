@@ -17,7 +17,6 @@ var debug = require('debug')('connect:dispatcher')
 var EventEmitter = require('events').EventEmitter
 var finalhandler = require('finalhandler')
 var http = require('http')
-var log = require('logger').create('connect-logger')
 var merge = require('utils-merge')
 var parseUrl = require('parseurl')
 
@@ -122,10 +121,10 @@ proto.use = function use (route, fn) {
  */
 
 proto.handle = function handle (req, res, out) {
-  log.debug('In connect index.js line 125 proto.handle called with req, res, and out %O %O $O', req, res, out)
+  debug('In connect index.js line 125 proto.handle called with req, res, and out %O %O $O', req, res, out)
   var index = 0
   var protohost = getProtohost(req.url) || ''
-  log.debug('In connect index.js line 128 protohost is %s', protohost)
+  debug('In connect index.js line 128 protohost is %s', protohost)
   var removed = ''
   var slashAdded = false
   var stack = this.stack
