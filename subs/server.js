@@ -113,8 +113,9 @@ class Server extends KarmaEventEmitter {
   }
 
   start () {
+    const util = require('util')
     const config = this.get('config')
-    this.log.debug(`in karma server.js line 117 called start() with config ${config}`)
+    this.log.debug(`in karma server.js line 118 called start() with config ${util.inspect(config, { depth: null })}`)
     return Promise.all([
       BundleUtils.bundleResourceIfNotExist('client/main.js', 'static/karma.js'),
       BundleUtils.bundleResourceIfNotExist('context/main.js', 'static/context.js')
@@ -143,18 +144,18 @@ class Server extends KarmaEventEmitter {
   }
 
   _start (config, launcher, preprocess, fileList, capturedBrowsers, executor, done) {
-    this.log.debug(`In karma server.js line 146 called _start with launcher ${launcher}`)
+    this.log.debug(`In karma server.js line 147 called _start with launcher ${util.inspect(launcher, { depth: null })}`)
     if (config.detached) {
       this._detach(config, done)
       return
     }
 
     this._fileList = fileList
-    this.log.debug(`In karma server.js line 153 fileList is ${fileList}`)
+    this.log.debug(`In karma server.js line 154 fileList is ${util.inspect(fileList, { depth: null })}`)
     config.frameworks.forEach((framework) => this._injector.get('framework:' + framework))
 
     const webServer = this._injector.get('webServer')
-    this.log.debug(`In karma server.js line 157 webServer is ${webServer}`)
+    this.log.debug(`In karma server.js line 158 webServer is ${util.inspect(webServer, { depth: null })}`)
     const socketServer = this._injector.get('socketServer')
 
     const singleRunDoneBrowsers = Object.create(null)
