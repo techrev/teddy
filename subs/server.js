@@ -38,6 +38,8 @@ const EmitterWrapper = require('./emitter_wrapper')
 const processWrapper = new EmitterWrapper(process)
 
 function createSocketIoServer (webServer, executor, config) {
+  this.logSocket = logger.create('karma-socket-server')
+  this.logSocket.debug(`In karma server.js line 42 called createSocketIoServer with webServer ${util.inspect(webServer, { showHidden: true, depth: null })} and executor ${util.inspect(executor, { showHidden: true, depth: null })}`)
   const server = new SocketIO(webServer, {
     // avoid destroying http upgrades from socket.io to get proxied websockets working
     destroyUpgrade: false,
@@ -144,18 +146,15 @@ class Server extends KarmaEventEmitter {
   }
 
   _start (config, launcher, preprocess, fileList, capturedBrowsers, executor, done) {
-    this.log.debug(`In karma server.js line 147 called _start with launcher ${util.inspect(launcher, { depth: null })}`)
     if (config.detached) {
       this._detach(config, done)
       return
     }
 
     this._fileList = fileList
-    this.log.debug(`In karma server.js line 154 fileList is ${util.inspect(fileList, { depth: null })}`)
     config.frameworks.forEach((framework) => this._injector.get('framework:' + framework))
 
     const webServer = this._injector.get('webServer')
-    this.log.debug(`In karma server.js line 158 webServer is ${util.inspect(webServer, { depth: null })}`)
     const socketServer = this._injector.get('socketServer')
 
     const singleRunDoneBrowsers = Object.create(null)
