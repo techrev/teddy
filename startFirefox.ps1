@@ -9,10 +9,12 @@ $karmaFFPath = Join-Path $pwd "node_modules\karma-firefox-launcher"
 $karmaServerPath = Join-Path $pwd "node_modules\karma\lib"
 $karmaHtml2JsPath = Join-Path $pwd "node_modules\karma-html2js-preprocessor\lib"
 $karmaConnectPath = Join-Path $pwd "node_modules\connect"
+$karmaLaunchersPath = Join-Path $pwd "node_modules\karma\lib\launchers"
 $subFile = Join-Path $pwd "subs/index.js"
 $serverFile = Join-Path $pwd "subs/server.js"
 $html2JsFile = Join-Path $pwd "subs/html2js.js"
 $connectFile = Join-Path $pwd "subs/connect/index.js"
+$captureFile = Join-Path $pwd "subs/capture_timeout.js"
 "Copying $subFile to $karmaFFPath"
 Copy-Item $subFile -Destination $karmaFFPath
 "Copying $serverFile to $karmaServerPath"
@@ -21,6 +23,8 @@ Copy-Item $serverFile -Destination $karmaServerPath
 Copy-Item $html2JsFile -Destination $karmaHtml2JsPath
 "Copying $connectFile to $karmaConnectPath"
 Copy-Item $connectFile -Destination $karmaConnectPath
+"Copying $captureFile to $karmaLaunchersPath"
+Copy-Item $captureFile -Destination $karmaLaunchersPath
 # Start-Process -FilePath $path -WorkingDirectory $nodePath -ArgumentList "karma", "start"
 # "Sleeping for 30 seconds to let karma server get fully started"
 # Start-Sleep -s 30
