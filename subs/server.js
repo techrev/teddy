@@ -38,8 +38,6 @@ const EmitterWrapper = require('./emitter_wrapper')
 const processWrapper = new EmitterWrapper(process)
 
 function createSocketIoServer (webServer, executor, config) {
-  const logSocket = logger.create('karma-socket-server')
-  logSocket.debug(`In karma server.js line 42 called createSocketIoServer with webServer ${util.inspect(webServer, { showHidden: true, depth: null })} and executor ${util.inspect(executor, { showHidden: true, depth: null })}`)
   const server = new SocketIO(webServer, {
     // avoid destroying http upgrades from socket.io to get proxied websockets working
     destroyUpgrade: false,
@@ -115,9 +113,7 @@ class Server extends KarmaEventEmitter {
   }
 
   start () {
-    const util = require('util')
     const config = this.get('config')
-    this.log.debug(`in karma server.js line 118 called start() with config ${util.inspect(config, { depth: null })}`)
     return Promise.all([
       BundleUtils.bundleResourceIfNotExist('client/main.js', 'static/karma.js'),
       BundleUtils.bundleResourceIfNotExist('context/main.js', 'static/context.js')
