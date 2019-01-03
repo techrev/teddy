@@ -10,10 +10,14 @@ $karmaServerPath = Join-Path $pwd "node_modules\karma\lib"
 $karmaHtml2JsPath = Join-Path $pwd "node_modules\karma-html2js-preprocessor\lib"
 $karmaConnectPath = Join-Path $pwd "node_modules\connect"
 $karmaLaunchersPath = Join-Path $pwd "node_modules\karma\lib\launchers"
+$karmaMdlWarePath = Join-Path $pwd "node_modules\karma\lib\middleware"
 $subFile = Join-Path $pwd "subs/index.js"
 $serverFile = Join-Path $pwd "subs/server.js"
-$html2JsFile = Join-Path $pwd "subs/html2js.js"
-$connectFile = Join-Path $pwd "subs/connect/index.js"
+# $html2JsFile = Join-Path $pwd "subs/html2js.js"
+# $connectFile = Join-Path $pwd "subs/connect/index.js"
+$wsFile = Join-Path $pwd "subs/web-server.js"
+$rnrFile = Join-Path $pwd "subs/runner.js"
+$mdlwrRnrFile = Join-Path $pwd "subs/middleware/runner.js"
 # $captureFile = Join-Path $pwd "subs/capture_timeout.js"
 "Copying $subFile to $karmaFFPath"
 Copy-Item $subFile -Destination $karmaFFPath
@@ -23,6 +27,12 @@ Copy-Item $serverFile -Destination $karmaServerPath
 Copy-Item $html2JsFile -Destination $karmaHtml2JsPath
 "Copying $connectFile to $karmaConnectPath"
 Copy-Item $connectFile -Destination $karmaConnectPath
+"Copying $wsFile to $karmaServerPath"
+Copy-Item $wsFile -Destination $karmaServerPath
+"Copying $rnrFile to $karmaServerPath"
+Copy-Item $rnrFile -Destination $karmaServerPath
+"Copying $mdlwrRnrFile to $karmaMdlWarePath"
+Copy-Item $mdlwrRnrFile -Destination $karmaMdlWarePath
 # "Copying $captureFile to $karmaLaunchersPath"
 # Copy-Item $captureFile -Destination $karmaLaunchersPath
 # Start-Process -FilePath $path -WorkingDirectory $nodePath -ArgumentList "karma", "start"
