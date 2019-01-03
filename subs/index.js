@@ -140,7 +140,7 @@ var FirefoxBrowser = function (id, baseBrowserDecorator, args) {
   }
 
   this._start = function (url) {
-    log.debug(`In karma ff launcher index.js line 130 starting firefox with url ${url}`)
+    log.debug(`In karma ff launcher index.js line 143 starting firefox with url ${url}`)
     var self = this
     var command = this._getCommand()
     var profilePath = args.profile || self._tempDir
@@ -158,10 +158,11 @@ var FirefoxBrowser = function (id, baseBrowserDecorator, args) {
     }
 
     fs.writeFileSync(profilePath + '/prefs.js', this._getPrefs(args.prefs))
-    log.debug(`In karma ff launcher index.js line 148 about it call self._exeCommand`)
+    log.debug(`In karma ff launcher index.js line 161 about to call self._exeCommand with command ${command}, url ${url}, -profile ${profilePath} and flags ${flags}`)
     self._execCommand(
       command,
-      [url, '-profile', profilePath, '-no-remote'].concat(flags)
+      // [url, '-profile', profilePath, '-no-remote'].concat(flags)
+      [url, '-profile', profilePath].concat(flags)
     )
   }
 }
@@ -177,7 +178,6 @@ FirefoxBrowser.prototype = {
   },
   ENV_CMD: 'FIREFOX_BIN'
 }
-log.debug(`In karma ff launcher index.js line 165 Program Files Directories: ${process.env.PROGRAMFILES}, ${process.env['PROGRAMFILES(X86)']}`)
 FirefoxBrowser.$inject = ['id', 'baseBrowserDecorator', 'args']
 
 var FirefoxHeadlessBrowser = makeHeadlessVersion(FirefoxBrowser)
