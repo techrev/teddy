@@ -1,12 +1,12 @@
 $nodePath = "C:\ProgramData\nvs\node\11.4.0\x64"
 $nvsDir = Get-ChildItem -Path $nodePath
-"nvs directory listing is $nvsDir"
+# "nvs directory listing is $nvsDir"
 # "Starting karma server"
-$path = Join-Path $nodePath "node.exe"
-"path to node is $path"
+# $path = Join-Path $nodePath "node.exe"
+# "path to node is $path"
 "working directory is $pwd"
 $karmaFFPath = Join-Path $pwd "node_modules\karma-firefox-launcher"
-$karmaServerPath = Join-Path $pwd "node_modules\karma\lib"
+$karmaLibPath = Join-Path $pwd "node_modules\karma\lib"
 $karmaHtml2JsPath = Join-Path $pwd "node_modules\karma-html2js-preprocessor\lib"
 $karmaConnectPath = Join-Path $pwd "node_modules\connect"
 $karmaLaunchersPath = Join-Path $pwd "node_modules\karma\lib\launchers"
@@ -19,20 +19,23 @@ $wsFile = Join-Path $pwd "subs/web-server.js"
 $rnrFile = Join-Path $pwd "subs/runner.js"
 $mdlwrRnrFile = Join-Path $pwd "subs/middleware/runner.js"
 # $captureFile = Join-Path $pwd "subs/capture_timeout.js"
+$browserFile = Join-Path $pwd "/subs/browser.js"
 "Copying $subFile to $karmaFFPath"
 Copy-Item $subFile -Destination $karmaFFPath
-"Copying $serverFile to $karmaServerPath"
-Copy-Item $serverFile -Destination $karmaServerPath
+"Copying $serverFile to $karmaLibPath"
+Copy-Item $serverFile -Destination $karmaLibPath
 "Copying $html2JsFile to $karmaHtml2JsPath"
 Copy-Item $html2JsFile -Destination $karmaHtml2JsPath
 "Copying $connectFile to $karmaConnectPath"
 Copy-Item $connectFile -Destination $karmaConnectPath
-"Copying $wsFile to $karmaServerPath"
-Copy-Item $wsFile -Destination $karmaServerPath
-"Copying $rnrFile to $karmaServerPath"
-Copy-Item $rnrFile -Destination $karmaServerPath
+"Copying $wsFile to $karmaLibPath"
+Copy-Item $wsFile -Destination $karmaLibPath
+"Copying $rnrFile to $karmaLibPath"
+Copy-Item $rnrFile -Destination $karmaLibPath
 "Copying $mdlwrRnrFile to $karmaMdlWarePath"
 Copy-Item $mdlwrRnrFile -Destination $karmaMdlWarePath
+"Copying $browserFile to $karmaLibPath"
+Copy-Item $browserFile -Destination $karmaLibPath
 # "Copying $captureFile to $karmaLaunchersPath"
 # Copy-Item $captureFile -Destination $karmaLaunchersPath
 # Start-Process -FilePath $path -WorkingDirectory $nodePath -ArgumentList "karma", "start"
