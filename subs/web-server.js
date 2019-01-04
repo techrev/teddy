@@ -107,13 +107,7 @@ function createWebServer (injector, config) {
   if (config.httpModule) {
     serverClass = config.httpModule
   }
-  let util = require('util')
-  log.debug(`In karma/lib/webserver line 110 serverArguments sent to http.createServer are: ${util.inspect(serverArguments, { depth: null })}`)
   const server = serverClass.createServer.apply(null, serverArguments)
-
-  server.on('request', function (req, res) {
-    log.debug(`In karma/lib/webserver line 115, request received at the server: ${util.inspect(req, { depth: null })}`)
-  })
 
   server.on('upgrade', function (req, socket, head) {
     log.debug(`upgrade ${req.url}`)

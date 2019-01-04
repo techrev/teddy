@@ -12,7 +12,7 @@ const DISCONNECTED = 5 // The browser got permanently disconnected (being remove
 
 class Browser {
   constructor (id, fullName, collection, emitter, socket, timer, disconnectDelay, noActivityTimeout) {
-    console.trace()
+    logger.debug(console.trace(`In Browser class, karma/lib/browser line 15`))
     this.id = id
     this.fullName = fullName
     this.name = helper.browserFullNameToShort(fullName)
