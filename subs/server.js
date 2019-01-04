@@ -103,6 +103,8 @@ class Server extends KarmaEventEmitter {
     })
 
     modules = modules.concat(plugin.resolve(config.plugins, this))
+    let util = require('util')
+    this.log.debug(`In karma/lib/server line 107, modules passed to injector are ${util.inspect(modules, { depth: null })}`)
     this._injector = new di.Injector(modules)
   }
 
@@ -159,6 +161,10 @@ class Server extends KarmaEventEmitter {
 
     webServer.on('error', (err) => {
       this.dieOnError(`Webserver fail ${err}`)
+    })
+
+    webServer.on('request', (req, res) => {
+      this.log.debug(`In karma/lib/server line 165, request received at the server: ${util.inspect(req, { depth: null })}`)
     })
 
     const afterPreprocess = () => {
