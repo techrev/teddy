@@ -27,7 +27,9 @@ class Browser {
     this.disconnectDelay = disconnectDelay
 
     this.log = logger.create(this.name)
-    this.log.debug(new Error().stack)
+    this.log.debug(`In karma/lib/browser line 30, created a logger for ${this.name}`)
+    let stack = new Error().stack
+    this.log.debug(`${stack}`)
     this.noActivityTimeoutId = null
     this.pendingDisconnect = null
   }
