@@ -103,8 +103,6 @@ class Server extends KarmaEventEmitter {
     })
 
     modules = modules.concat(plugin.resolve(config.plugins, this))
-    let util = require('util')
-    this.log.debug(`In karma/lib/server line 107, modules passed to injector are ${util.inspect(modules, { depth: null })}`)
     this._injector = new di.Injector(modules)
   }
 

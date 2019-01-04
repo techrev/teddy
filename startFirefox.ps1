@@ -1,5 +1,5 @@
-$nodePath = "C:\ProgramData\nvs\node\11.4.0\x64"
-$nvsDir = Get-ChildItem -Path $nodePath
+# $nodePath = "C:\ProgramData\nvs\node\11.4.0\x64"
+# $nvsDir = Get-ChildItem -Path $nodePath
 # "nvs directory listing is $nvsDir"
 # "Starting karma server"
 # $path = Join-Path $nodePath "node.exe"
