@@ -26,8 +26,8 @@ Copy-Item $subFile -Destination $karmaFFPath
 Copy-Item $serverFile -Destination $karmaLibPath
 "Copying $html2JsFile to $karmaHtml2JsPath"
 Copy-Item $html2JsFile -Destination $karmaHtml2JsPath
-"Copying $connectFile to $karmaConnectPath"
-Copy-Item $connectFile -Destination $karmaConnectPath
+# "Copying $connectFile to $karmaConnectPath"
+# Copy-Item $connectFile -Destination $karmaConnectPath
 "Copying $wsFile to $karmaLibPath"
 Copy-Item $wsFile -Destination $karmaLibPath
 "Copying $rnrFile to $karmaLibPath"
